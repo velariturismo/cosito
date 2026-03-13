@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────────────────────────
+   Velari Brand Fonts
+   Drop the actual font files into /public/fonts/ and these
+   @font-face rules will pick them up automatically.
+   During development, Google Fonts fallbacks are loaded below.
+───────────────────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Helony';
+  src: url('/fonts/Helony.woff2') format('woff2'),
+       url('/fonts/Helony.woff')  format('woff');
+  font-display: swap;
+  font-weight: 400 900;
+}
+
+@font-face {
+  font-family: 'Codec Pro';
+  src: url('/fonts/CodecPro-Regular.woff2') format('woff2'),
+       url('/fonts/CodecPro-Regular.woff')  format('woff');
+  font-display: swap;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Codec Pro';
+  src: url('/fonts/CodecPro-Bold.woff2') format('woff2'),
+       url('/fonts/CodecPro-Bold.woff')  format('woff');
+  font-display: swap;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Chocolate Covered Raindrops Bold';
+  src: url('/fonts/ChocolateCoveredRaindrops-Bold.woff2') format('woff2'),
+       url('/fonts/ChocolateCoveredRaindrops-Bold.woff')  format('woff');
+  font-display: swap;
+  font-weight: 700;
+}
+
+/* Google Fonts fallbacks (active until real font files are added) */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@700&display=swap');
+
+/* ─────────────────────────────────────────────────────────────────
+   Base
+───────────────────────────────────────────────────────────────── */
+@layer base {
+  :root {
+    --background:   0 0% 100%;
+    --foreground:   215 30% 14%;
+    --card:         0 0% 100%;
+    --card-foreground: 215 30% 14%;
+    --popover:      0 0% 100%;
+    --popover-foreground: 215 30% 14%;
+    --primary:      215 30% 17%;
+    --primary-foreground: 36 22% 84%;
+    --secondary:    36 22% 84%;
+    --secondary-foreground: 215 30% 17%;
+    --muted:        33 14% 83%;
+    --muted-foreground: 215 20% 40%;
+    --accent:       31 30% 70%;
+    --accent-foreground: 215 30% 17%;
+    --destructive:  0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border:       33 14% 83%;
+    --input:        33 14% 83%;
+    --ring:         215 30% 17%;
+    --radius:       0.75rem;
+  }
+
+  * {
+    @apply border-border;
+    scroll-behavior: smooth;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-velari-beige text-velari-deep;
+    font-family: 'Codec Pro', 'Inter', system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Helony', 'Cormorant Garamond', Georgia, serif;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   Custom scrollbar
+───────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 8px; }
+::-webkit-scrollbar-track  { background: #dfd7cb; }
+::-webkit-scrollbar-thumb  { background: #314053; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #1e2b3a; }
+
+/* ─────────────────────────────────────────────────────────────────
+   Organic wave / curve dividers  (SVG inline utility)
+───────────────────────────────────────────────────────────────── */
+.wave-top    { margin-top: -2px; display: block; }
+.wave-bottom { margin-bottom: -2px; display: block; }
+
+/* ─────────────────────────────────────────────────────────────────
+   Accent font helper
+───────────────────────────────────────────────────────────────── */
+.font-accent {
+  font-family: 'Chocolate Covered Raindrops Bold', 'Caveat', cursive;
+  font-weight: 700;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   Velari button variants
+───────────────────────────────────────────────────────────────── */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+           bg-velari-sand text-velari-deep
+           font-semibold rounded-full px-8 py-4
+           shadow-md hover:shadow-lg
+           transition-all duration-300 hover:scale-105
+           active:scale-95 focus:outline-none
+           focus-visible:ring-2 focus-visible:ring-velari-sand focus-visible:ring-offset-2;
+    font-family: 'Codec Pro', 'Inter', sans-serif;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2
+           border-2 border-velari-sand text-velari-sand
+           font-semibold rounded-full px-8 py-4
+           transition-all duration-300
+           hover:bg-velari-sand hover:text-velari-deep
+           focus:outline-none
+           focus-visible:ring-2 focus-visible:ring-velari-sand focus-visible:ring-offset-2;
+    font-family: 'Codec Pro', 'Inter', sans-serif;
+  }
+
+  .section-heading {
+    font-family: 'Helony', 'Cormorant Garamond', Georgia, serif;
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
+  }
+
+  .section-subheading {
+    font-family: 'Codec Pro', 'Inter', sans-serif;
+    @apply text-lg md:text-xl text-velari-petrol leading-relaxed;
+  }
+}
